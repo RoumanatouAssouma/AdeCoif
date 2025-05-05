@@ -4,8 +4,8 @@
 @section('meta_description', 'Découvrez nos plus belles réalisations dans la galerie d\'AdéCoif, institut de beauté à Abomey-Calavi.')
 
 @section('content')
-    <div class="py-12 md:py-20">
-        <div class="container px-4">
+    <div class="py-12 md:py-20 ">
+        <div class="container px-4 mx-auto ">
             <!-- Header -->
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h1 class="text-4xl font-bold mb-6 text-gray-800">Notre Galerie</h1>
@@ -13,6 +13,8 @@
                     Découvrez nos plus belles réalisations et laissez-vous inspirer pour votre prochaine visite chez AdéCoif.
                 </p>
             </div>
+
+            @include('partials.separator')
 
             <!-- Gallery Categories -->
             <div class="flex flex-wrap justify-center gap-3 mb-10">
@@ -27,7 +29,7 @@
             </div>
 
             <!-- Gallery Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-auto">
                 @foreach($galleryImages as $image)
                 <div class="group relative overflow-hidden rounded-lg shadow-md">
                     <div class="relative aspect-square">
@@ -45,6 +47,8 @@
             <div class="mt-10">
                 {{ $galleryImages->links() }}
             </div>
+
+            @include('partials.separator')
 
             <!-- CTA Section -->
             <div class="mt-16 text-center">

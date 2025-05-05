@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="py-12 md:py-20">
+<div class="py-12 md:py-20 mx-auto">
     <div class="container px-4">
         {{-- Header --}}
         <div class="text-center max-w-3xl mx-auto mb-16">
@@ -28,7 +28,7 @@
                 <div class="group relative overflow-hidden rounded-lg shadow-md">
                     <div class="relative aspect-square">
                         <img
-                            src="{{ $image['src'] ?? '/placeholder.svg' }}"
+                            src="{{ $image['src'] ?? '/public' }}"
                             alt="{{ $image['alt'] }}"
                             class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
                         />

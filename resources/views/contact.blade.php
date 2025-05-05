@@ -4,12 +4,12 @@
 @section('meta_description', 'Contactez AdéCoif, institut de beauté à Abomey-Calavi. Nous sommes là pour répondre à toutes vos questions.')
 
 @section('content')
-    <div class="py-12 md:py-20">
-        <div class="container px-4">
+    <div class="py-12 md:py-20 ">
+        <div class="container px-4 mx-auto">
             <!-- Header -->
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h1 class="text-4xl font-bold mb-6 text-gray-800">Contactez-Nous</h1>
-                <p class="text-xl text-gray-600">
+                <h1 class="text-4xl font-bold mb-6 text-black dark:text-white">Contactez-Nous</h1>
+                <p class="text-xl text-black dark:text-white leading-relaxed">
                     Nous sommes là pour répondre à toutes vos questions. N'hésitez pas à nous contacter par téléphone, email ou
                     en remplissant le formulaire ci-dessous.
                 </p>
@@ -17,7 +17,7 @@
 
             <div class="grid md:grid-cols-2 gap-12 items-start">
                 <!-- Contact Form -->
-                <div class="bg-white rounded-lg shadow-lg p-8">
+                <div class="bg-gray-200 rounded-lg shadow-xl p-8 sm:p-10">
                     <h2 class="text-2xl font-bold mb-6 text-gray-800">Envoyez-nous un message</h2>
 
                     @if(session('success'))
@@ -31,14 +31,14 @@
                         <div class="grid gap-4 sm:grid-cols-2">
                             <div class="space-y-2">
                                 <label for="name" class="block text-sm font-medium text-gray-700">Nom complet</label>
-                                <input type="text" id="name" name="name" value="{{ old('name') }}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('name') border-red-500 @enderror" placeholder="Votre nom" required>
+                                <input type="text" id="name" name="name" value="{{ old('name') }}" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('name') border-red-500 @enderror" placeholder="Votre nom" required>
                                 @error('name')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="space-y-2">
                                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                <input type="email" id="email" name="email" value="{{ old('email') }}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('email') border-red-500 @enderror" placeholder="votre@email.com" required>
+                                <input type="email" id="email" name="email" value="{{ old('email') }}" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('email') border-red-500 @enderror" placeholder="votre@email.com" required>
                                 @error('email')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
@@ -47,7 +47,7 @@
 
                         <div class="space-y-2">
                             <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
-                            <input type="text" id="phone" name="phone" value="{{ old('phone') }}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('phone') border-red-500 @enderror" placeholder="+229 XX XX XX XX">
+                            <input type="text" id="phone" name="phone" value="{{ old('phone') }}" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('phone') border-red-500 @enderror" placeholder="+229 XX XX XX XX">
                             @error('phone')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -55,7 +55,7 @@
 
                         <div class="space-y-2">
                             <label for="subject" class="block text-sm font-medium text-gray-700">Sujet</label>
-                            <input type="text" id="subject" name="subject" value="{{ old('subject') }}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('subject') border-red-500 @enderror" placeholder="Sujet de votre message" required>
+                            <input type="text" id="subject" name="subject" value="{{ old('subject') }}" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('subject') border-red-500 @enderror" placeholder="Sujet de votre message" required>
                             @error('subject')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -63,21 +63,21 @@
 
                         <div class="space-y-2">
                             <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                            <textarea id="message" name="message" rows="5" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('message') border-red-500 @enderror" placeholder="Votre message..." required>{{ old('message') }}</textarea>
+                            <textarea id="message" name="message" rows="5" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('message') border-red-500 @enderror" placeholder="Votre message..." required>{{ old('message') }}</textarea>
                             @error('message')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
-                        <button type="submit" class="w-full inline-flex items-center justify-center px-4 py-2 bg-rose-600 text-white rounded-md hover:bg-rose-700 text-sm font-medium">
+                        <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 bg-yellow-500 text-white rounded-lg hover:bg-rose-700 text-sm font-medium transition duration-200">
                             Envoyer le message
                         </button>
                     </form>
                 </div>
 
                 <!-- Contact Information -->
-                <div>
-                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Informations de contact</h2>
+                <div class=" rounded-lg shadow-xl p-8 sm:p-10">
+                    <h2 class="text-2xl font-bold mb-6">Informations de contact</h2>
 
                     <div class="space-y-8">
                         <div class="flex items-start">
@@ -89,7 +89,7 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-lg mb-1">Adresse</h3>
-                                <p class="text-gray-600">Abomey-Calavi, Bénin</p>
+                                <p class="">Abomey-Calavi, Bénin</p>
                             </div>
                         </div>
 
@@ -101,7 +101,7 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-lg mb-1">Téléphone</h3>
-                                <p class="text-gray-600">+229 97 21 83 15</p>
+                                <p class="">+229 97 21 83 15</p>
                             </div>
                         </div>
 
@@ -113,7 +113,7 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-lg mb-1">Email</h3>
-                                <p class="text-gray-600">aguinedmond7@gmail.com</p>
+                                <p class="">aguinedmond7@gmail.com</p>
                             </div>
                         </div>
 
@@ -125,7 +125,7 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-lg mb-1">Horaires d'ouverture</h3>
-                                <div class="text-gray-600">
+                                <div class="">
                                     <p>Lundi - Samedi: 8h - 19h</p>
                                     <p>Dimanche: 10h - 16h</p>
                                 </div>
@@ -134,11 +134,17 @@
                     </div>
 
                     <!-- Map Placeholder -->
-                    <div class="mt-8 bg-gray-200 h-64 rounded-lg relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-gray-500">
-                            Carte Google Maps ici
-                        </div>
-                    </div>
+                    <a href="">
+                        <div class="mt-8 bg-gray-100 h-64 rounded-2xl relative shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                            <div class="absolute inset-0 flex items-center justify-center text-gray-500">
+                                <svg class="h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A2 2 0 013 15.382V5.618a2 2 0 011.553-1.947L9 2m0 0l6 3m-6-3v18m6-15l5.447 2.724A2 2 0 0121 8.618v9.764a2 2 0 01-1.553 1.947L15 22m0 0V4" />
+                                </svg>
+                                <span class="ml-2 text-sm">Carte Google Maps ici</span>
+                            </div>
+                        </div>    
+                    </a>
+
                 </div>
             </div>
         </div>

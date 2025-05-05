@@ -1,16 +1,16 @@
-<header class="sticky top-0 z-50 transition-all duration-300 shadow-md bg-gradient-to-r from-red-400 to-blue-300 dark:bg-gradient-to-r dark:from-red-800 dark:to-blue-800">
-    <div class="container px-4 mx-auto">
-        <div class="flex items-center justify-between h-20">
+<header class="sticky top-0 z-50 transition-all duration-300 shadow-md bg-gradient-to-r from-gray-300 to-yellow-300 dark:bg-gradient-to-r dark:from-gray-700 dark:to-blue-800">
+    <div class="container h-24 max-w-full px-4 mx-auto ">
+        <div class="flex items-center justify-between">
             <!-- Logo avec animation hover -->
-            <a href="{{ route('home') }}" class="flex items-center transition-all duration-300 group">
-                <div class="relative w-12 h-12 mr-3 overflow-hidden transition-all duration-300 rounded-lg shadow-sm group-hover:shadow-md">
-                    <img src="{{ asset('images/logo.png') }}" alt="AdéCoif Logo" class="object-contain transition-transform duration-300 group-hover:scale-105">
+            <a href="{{ route('home') }}" class="flex items-center px-10 transition-all duration-300 group">
+                <div class="relative w-20 m-2 overflow-hidden transition-all duration-300 rounded-lg shadow-sm h-18 group-hover:shadow-md">
+                    <img src="{{ asset('storage/build/assets/build/assets/Adecoif-logo.png') }}" alt="AdéCoif Logo" class="object-contain transition-transform duration-300 group-hover:scale-105">
                 </div>
                 <span class="text-2xl font-bold text-black transition-colors duration-300 dark:text-white group-hover:text-red-800 dark:group-hover:text-rose-300">AdéCoif</span>
             </a>
 
             <!-- Desktop Navigation avec effet de soulignement -->
-            <nav class="items-center hidden space-x-8 text-black md:flex dark:text-white ont-bold">
+            <nav class="items-center hidden font-bold lg:space-x-10 md:space-x-4 md:flex">
                 @php
                     $navItems = [
                         'home' => 'Accueil',
@@ -20,9 +20,9 @@
                         'contact' => 'Contact'
                     ];
                 @endphp
-                
+
                 @foreach($navItems as $route => $label)
-                    <a href="{{ route($route) }}" 
+                    <a href="{{ route($route) }}"
                        class="text-gray-800 hover:text-rose-600 font-medium dark:text-gray-200 dark:hover:text-rose-400 {{ request()->routeIs($route.'*') ? 'text-rose-600 dark:text-rose-400' : '' }} relative py-2 group transition-all duration-200">
                         {{ $label }}
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-rose-600 dark:bg-rose-400 group-hover:w-full transition-all duration-300 {{ request()->routeIs($route.'*') ? 'w-full' : '' }}"></span>
@@ -31,8 +31,8 @@
             </nav>
 
             <!-- Action Buttons avec améliorations visuelles -->
-            <div class="items-center hidden space-x-5 md:flex">
-                <button id="theme-toggle" class="p-2 text-gray-700 transition-all duration-300 rounded-full shadow-sm hover:bg-white hover:text-rose-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-rose-400 hover:shadow">
+            <div class="items-center hidden px-6 space-x-4 md:flex">
+                <button id="theme-toggle" class="text-gray-700 transition-all duration-300 rounded-full shadow-sm hover:bg-white hover:text-rose-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-rose-400 hover:shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" class="hidden w-5 h-5 dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
@@ -65,7 +65,7 @@
         <div class="container px-4 py-6 mx-auto space-y-5">
             <nav class="flex flex-col space-y-4">
                 @foreach($navItems as $route => $label)
-                    <a href="{{ route($route) }}" 
+                    <a href="{{ route($route) }}"
                        class="text-gray-800 hover:text-rose-600 font-medium py-2.5 dark:text-gray-200 dark:hover:text-rose-400 {{ request()->routeIs($route.'*') ? 'text-rose-600 dark:text-rose-400 pl-2 border-l-4 border-rose-600 dark:border-rose-400' : '' }} transition-all duration-300 rounded-r-lg hover:bg-rose-50 dark:hover:bg-gray-700 hover:pl-2">
                         {{ $label }}
                     </a>
@@ -137,7 +137,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const themeToggle = document.getElementById('theme-toggle');
         const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-        
+
         if (themeToggle) {
             themeToggle.addEventListener('click', function() {
                 const isDark = document.documentElement.classList.contains('dark');
@@ -148,7 +148,7 @@
                 setTheme(!isDark);
             });
         }
-        
+
         if (mobileThemeToggle) {
             mobileThemeToggle.addEventListener('click', function() {
                 const isDark = document.documentElement.classList.contains('dark');
@@ -178,7 +178,7 @@
             #mobile-menu.opacity-100 {
                 opacity: 1;
             }
-            
+
             /* Style supplémentaire pour l'effet de fond */
             header {
                 border-bottom: 1px solid rgba(252, 231, 243, 0.3);

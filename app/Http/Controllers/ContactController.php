@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Mail;
+
 use App\Mail\ContactFormSubmitted;
+use Illuminate\Support\Facades\Log; // pour utiliser Log::error
+
 
 class ContactController extends Controller
 {
@@ -42,12 +45,12 @@ class ContactController extends Controller
         
         // Envoyer un email de notification (si configuré)
         try {
-            Mail::to(config('mail.admin_email', 'aguinedmond7@gmail.com'))
+            Mail::to(config('mail.admin_email', 'assoumaroumanatou08@gmail.com'))
                 ->send(new ContactFormSubmitted($contact));
         } catch (\Exception $e) {
-            // Log l'erreur mais ne pas interrompre le processus
-            \Log::error('Erreur lors de l\'envoi de l\'email: ' . $e->getMessage());
+            Log::error('Erreur envoi email : ' . $e->getMessage());
         }
+        
         
         // Rediriger avec un message de succès
         return redirect()->route('contact')

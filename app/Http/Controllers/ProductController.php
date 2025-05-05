@@ -19,6 +19,6 @@ class ProductController extends Controller
                                  ->take(4)
                                  ->get();
         
-        return view('shop.show', compact('product', 'relatedProducts'));
+        return view('details.product-show', compact('product', 'relatedProducts'));
     }
 }
