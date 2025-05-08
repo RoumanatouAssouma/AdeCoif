@@ -36,7 +36,6 @@
                             <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Plus récents</option>
                             <option value="price-low" {{ request('sort') == 'price-low' ? 'selected' : '' }}>Prix croissant</option>
                             <option value="price-high" {{ request('sort') == 'price-high' ? 'selected' : '' }}>Prix décroissant</option>
-                            <option value="popular" {{ request('sort') == 'popular' ? 'selected' : '' }}>Popularité</option>
                         </select>
                     </form>
                 </div>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'name',
         'slug',
@@ -22,7 +22,7 @@ class Product extends Model
         'rating',
         'reviews_count',
     ];
-    
+
     /**
      * Relation avec la catégorie de produit
      */
@@ -30,7 +30,7 @@ class Product extends Model
     {
         return $this->belongsTo(ProductCategory::class, 'category_id');
     }
-    
+
     /**
      * Formater le prix en FCFA
      */
@@ -38,4 +38,6 @@ class Product extends Model
     {
         return number_format($this->price, 0, ',', ' ') . ' FCFA';
     }
+
+    
 }

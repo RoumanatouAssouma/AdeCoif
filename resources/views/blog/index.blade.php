@@ -4,120 +4,106 @@
 @section('meta_description', 'Découvrez nos articles, conseils et astuces dans le domaine de la beauté et de la coiffure sur le blog d\'AdéCoif.')
 
 @section('content')
-    <div class="py-12 md:py-20">
-        <div class="container px-4">
-            <!-- Header -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h1 class="text-4xl font-bold mb-6 text-gray-800">Notre Blog</h1>
-                <p class="text-xl text-gray-600">
-                    Conseils, astuces et tendances dans le monde de la beauté et de la coiffure.
-                </p>
-            </div>
+<div class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        
+        <!-- HEADER -->
+        <div class="max-w-2xl mx-auto text-center mb-14">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Le Blog d’AdéCoif</h1>
+            <p class="text-lg text-gray-600">Inspiration, conseils & tendances dans l’univers de la beauté et de la coiffure.</p>
+        </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Main Content -->
-                <div class="md:col-span-2">
-                    <div class="grid gap-8">
-                        @foreach($posts as $post)
-                        <article class="bg-white rounded-lg shadow-md overflow-hidden">
-                            <div class="md:flex">
-                                <div class="md:w-1/3">
-                                    <div class="relative h-48 md:h-full">
-                                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="object-cover w-full h-full">
-                                    </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            
+            <!-- ARTICLES -->
+            <div class="md:col-span-2 space-y-10">
+                @foreach($posts as $post)
+                <article class="bg-white rounded-2xl shadow hover:shadow-lg transition duration-300 overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3">
+                            <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="md:w-2/3 p-6 flex flex-col justify-between">
+                            <div>
+                                <div class="flex flex-wrap items-center text-sm text-gray-500 mb-3 gap-3">
+                                    <span class="bg-rose-100 text-rose-700 text-xs px-3 py-1 rounded-full">
+                                        {{ $post->category->name }}
+                                    </span>
+                                    <span class="flex items-center gap-1">
+                                        📅 {{ $post->published_at->format('d/m/Y') }}
+                                    </span>
+                                    <span class="flex items-center gap-1">
+                                        👤 {{ $post->user->name }}
+                                    </span>
                                 </div>
-                                <div class="md:w-2/3 p-6">
-                                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                                        <span class="bg-rose-100 text-rose-800 text-xs px-2 py-1 rounded-full">
-                                            {{ $post->category->name }}
-                                        </span>
-                                        <span class="mx-2">•</span>
-                                        <span class="flex items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                            </svg>
-                                            {{ $post->published_at->format('d/m/Y') }}
-                                        </span>
-                                        <span class="mx-2">•</span>
-                                        <span class="flex items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                            </svg>
-                                            {{ $post->user->name }}
-                                        </span>
-                                    </div>
-                                    <h2 class="text-xl font-bold mb-2 text-gray-800">
-                                        <a href="{{ route('blog.show', $post->slug) }}" class="hover:text-rose-600 transition-colors">
-                                            {{ $post->title }}
-                                        </a>
-                                    </h2>
-                                    <p class="text-gray-600 mb-4">{{ $post->excerpt }}</p>
-                                    <a href="{{ route('blog.show', $post->slug) }}" class="inline-flex items-center px-4 py-2 border border-rose-600 text-rose-600 rounded-md hover:bg-rose-50 text-sm font-medium">
-                                        Lire la suite
-                                    </a>
-                                </div>
+
+                                <h2 class="text-2xl font-semibold text-gray-800 hover:text-rose-600 transition">
+                                    <a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a>
+                                </h2>
+                                <p class="text-gray-600 mt-2">{{ $post->excerpt }}</p>
                             </div>
-                        </article>
-                        @endforeach
-                    </div>
-
-                    <!-- Pagination -->
-                    <div class="mt-10">
-                        {{ $posts->links() }}
-                    </div>
-                </div>
-
-                <!-- Sidebar -->
-                <div>
-                    <!-- Search -->
-                    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-                        <h3 class="text-lg font-semibold mb-4 text-gray-800">Recherche</h3>
-                        <form action="{{ route('blog') }}" method="GET" class="flex">
-                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Rechercher un article..." class="flex-grow px-3 py-2 border border-gray-300 rounded-l-md shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500">
-                            <button type="submit" class="px-4 py-2 bg-rose-600 text-white rounded-r-md hover:bg-rose-700">
-                                Rechercher
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- Categories -->
-                    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-                        <h3 class="text-lg font-semibold mb-4 text-gray-800">Catégories</h3>
-                        <ul class="space-y-2">
-                            @foreach($categories as $category)
-                            <li>
-                                <a href="{{ route('blog.category', $category->slug) }}" class="flex justify-between items-center text-gray-700 hover:text-rose-600 transition-colors">
-                                    <span>{{ $category->name }}</span>
-                                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">{{ $category->posts_count }}</span>
+                            <div class="mt-4">
+                                <a href="{{ route('blog.show', $post->slug) }}" class="inline-flex items-center text-rose-600 hover:underline">
+                                    Lire la suite →
                                 </a>
-                            </li>
-                            @endforeach
-                        </ul>
+                            </div>
+                        </div>
                     </div>
+                </article>
+                @endforeach
 
-                    <!-- Recent Posts -->
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <h3 class="text-lg font-semibold mb-4 text-gray-800">Articles Récents</h3>
-                        <ul class="space-y-4">
-                            @foreach($recentPosts as $post)
-                            <li class="flex gap-3">
-                                <div class="relative w-16 h-16 flex-shrink-0">
-                                    <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="object-cover w-full h-full rounded">
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-sm">
-                                        <a href="{{ route('blog.show', $post->slug) }}" class="hover:text-rose-600 transition-colors">
-                                            {{ $post->title }}
-                                        </a>
-                                    </h4>
-                                    <p class="text-gray-500 text-xs">{{ $post->published_at->format('d/m/Y') }}</p>
-                                </div>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <!-- Pagination -->
+                <div class="pt-6">
+                    {{ $posts->links() }}
                 </div>
             </div>
+
+            <!-- SIDEBAR -->
+            <aside class="space-y-10">
+                <!-- Search -->
+                <div class="bg-white rounded-2xl shadow p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Recherche</h3>
+                    <form action="{{ route('blog') }}" method="GET" class="flex">
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Rechercher..." class="flex-grow px-4 py-2 border border-gray-300 rounded-l-md focus:ring-rose-500 focus:border-rose-500">
+                        <button type="submit" class="px-4 py-2 bg-rose-600 text-white rounded-r-md hover:bg-rose-700">OK</button>
+                    </form>
+                </div>
+
+                <!-- Categories -->
+                <div class="bg-white rounded-2xl shadow p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Catégories</h3>
+                    <ul class="space-y-2">
+                        @foreach($categories as $category)
+                        <li>
+                            <a href="{{ route('blog.category', $category->slug) }}" class="flex justify-between items-center text-gray-700 hover:text-rose-600">
+                                <span>{{ $category->name }}</span>
+                                <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">{{ $category->posts_count }}</span>
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <!-- Recent Posts -->
+                <div class="bg-white rounded-2xl shadow p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Articles récents</h3>
+                    <ul class="space-y-4">
+                        @foreach($recentPosts as $post)
+                        <li class="flex gap-3 items-start">
+                            <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-16 h-16 object-cover rounded-md">
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-800 hover:text-rose-600">
+                                    <a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a>
+                                </h4>
+                                <p class="text-xs text-gray-500">{{ $post->published_at->format('d/m/Y') }}</p>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </aside>
+
         </div>
     </div>
+</div>
 @endsection

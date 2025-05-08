@@ -31,14 +31,14 @@
                         <div class="grid gap-4 sm:grid-cols-2">
                             <div class="space-y-2">
                                 <label for="name" class="block text-sm font-medium text-gray-700">Nom complet</label>
-                                <input type="text" id="name" name="name" value="{{ old('name') }}" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('name') border-red-500 @enderror" placeholder="Votre nom" required>
+                                <input type="text" id="name" name="name" value="{{ old('name') }}" class="mt-1 block w-full px-4 py-3 border text-black rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-black @error('name') border-black @enderror" placeholder="Votre nom" required>
                                 @error('name')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="space-y-2">
                                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                <input type="email" id="email" name="email" value="{{ old('email') }}" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('email') border-red-500 @enderror" placeholder="votre@email.com" required>
+                                <input type="email" id="email" name="email" value="{{ old('email') }}" class="mt-1 text-black block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-black @error('email') border-black @enderror" placeholder="votre@email.com" required>
                                 @error('email')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
@@ -47,7 +47,7 @@
 
                         <div class="space-y-2">
                             <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
-                            <input type="text" id="phone" name="phone" value="{{ old('phone') }}" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('phone') border-red-500 @enderror" placeholder="+229 XX XX XX XX">
+                            <input type="text" id="phone" name="phone" value="{{ old('phone') }}" class="mt-1 block text-black w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-black @error('phone') border-black @enderror" placeholder="+229 XX XX XX XX">
                             @error('phone')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -55,21 +55,21 @@
 
                         <div class="space-y-2">
                             <label for="subject" class="block text-sm font-medium text-gray-700">Sujet</label>
-                            <input type="text" id="subject" name="subject" value="{{ old('subject') }}" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('subject') border-red-500 @enderror" placeholder="Sujet de votre message" required>
+                            <input type="text" id="subject" name="subject" value="{{ old('subject') }}" class="mt-1 text-black block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-black @error('subject') border-black @enderror" placeholder="Sujet de votre message" required>
                             @error('subject')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div class="space-y-2">
-                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                            <textarea id="message" name="message" rows="5" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-rose-500 @error('message') border-red-500 @enderror" placeholder="Votre message..." required>{{ old('message') }}</textarea>
+                            <label for="message" class="block text-sm font-medium text-black dark:text-">Message</label>
+                            <textarea id="message" name="message" rows="5" class="mt-1 block w-full text-black px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-rose-500 focus:border-black @error('message') border-black @enderror" placeholder="Votre message..." required>{{ old('message') }}</textarea>
                             @error('message')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
-                        <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 bg-yellow-500 text-white rounded-lg hover:bg-rose-700 text-sm font-medium transition duration-200">
+                        <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 bg-yellow-500 rounded-lg hover:bg-rose-700 text-sm font-medium transition duration-200">
                             Envoyer le message
                         </button>
                     </form>
@@ -142,7 +142,7 @@
                                 </svg>
                                 <span class="ml-2 text-sm">Carte Google Maps ici</span>
                             </div>
-                        </div>    
+                        </div>
                     </a>
 
                 </div>
